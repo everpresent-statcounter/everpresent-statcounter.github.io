@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatCounter: A Longitudinal Study</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Custom aesthetics for 'Extraordinary' feel */
+        :root {
+            --bg-texture: url('/images/background.jpg');
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f1115;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cinzel {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Subtle noise texture overlay */
+        .texture-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: var(--bg-texture);
+            background-size: cover;
+            background-blend-mode: overlay;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Smooth reveal animation classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .image-hover-zoom {
+            transition: transform 0.7s ease;
+        }
+        .group:hover .image-hover-zoom {
+            transform: scale(1.05);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f1115;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        /* Typography spacing */
+        .text-justify-tighter {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-white selection:text-black">
+
+    <!-- Ambient Texture Background -->
+    <div class="texture-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 mix-blend-difference px-6 py-6 flex justify-between items-center transition-all duration-300" id="navbar">
+        <div class="text-white font-bold tracking-widest uppercase text-sm cinzel">StatCounter</div>
+        <div class="hidden md:flex space-x-8 text-xs tracking-widest uppercase font-semibold text-gray-300">
+            <a href="#concept" class="hover:text-white transition-colors">The Concept</a>
+            <a href="#findings" class="hover:text-white transition-colors">Findings</a>
+            <a href="#paper" class="hover:text-white transition-colors">The Paper</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex flex-col items-center justify-center p-6 pt-20 overflow-hidden z-10">
+        
+        <!-- Large Background Text for depth -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[15vw] leading-none font-bold text-white opacity-[0.03] select-none cinzel whitespace-nowrap pointer-events-none">
+            METRICS
+        </div>
+
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative">
+            
+            <!-- Left: Text -->
+            <div class="lg:col-span-5 text-left order-2 lg:order-1 z-20 reveal">
+                <div class="inline-block px-3 py-1 mb-6 border border-gray-700 rounded-full text-[10px] tracking-[0.2em] uppercase text-gray-400 bg-black/30 backdrop-blur-sm">
+                    PerDis 2026 • Poster
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-white via-gray-200 to-gray-500">
+                    StatCounter
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-8 border-l-2 border-gray-700 pl-6">
+                    A longitudinal <!--auto-ethnography--> study exploring what happens when scholarly metrics leave the desktop and enter the flow of daily life.
+                </p>
+                
+                <div class="flex items-center gap-4 text-sm font-medium text-gray-300">
+                    <div class="h-px w-8 bg-gray-600"></div>
+                    <span>Jonas Oppenlaender</span>
+                    <span class="text-gray-600">•</span>
+                    <span>University of Oulu</span>
+                </div>
+            </div>
+
+            <!-- Right: Key Visual (Teaser) -->
+            <div class="lg:col-span-7 order-1 lg:order-2 relative group reveal delay-100">
+                <div class="relative overflow-hidden rounded-lg shadow-2xl shadow-black/50 aspect-[4/3] transform transition-transform duration-700 hover:scale-[1.01]">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 z-10"></div>
+                    <!-- Using teaser.jpg as key visual -->
+                    <img src="images/teaser.jpg" alt="StatCounter Device" class="w-full h-full object-cover image-hover-zoom">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute bottom-8 right-8 z-20 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded text-white max-w-xs">
+                        <p class="serif-font text-lg italic">StatCounter, a portable scholarly metric display.</p>
+                    </div>
+                </div>
+                <!-- Decorative elements behind image -->
+                <div class="absolute -top-10 -right-10 w-full h-full border border-gray-800 rounded-lg -z-10 hidden lg:block"></div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50">
+            <i class="fa-solid fa-arrow-down text-white text-xl"></i>
+        </div>
+    </header>
+
+    <!-- Section: The Abstract / Concept -->
+    <section id="concept" class="py-24 px-6 relative z-10 border-t border-gray-900 bg-gradient-to-b from-[#0f1115] to-[#13161c]">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-3xl md:text-4xl mb-12 serif-font font-light italic text-gray-200">
+                "What if your h-index lived in your pocket?"
+            </h2>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6 text-gray-400 leading-relaxed text-justify-tighter reveal">
+                <p>
+                    <span class="text-white font-semibold">Scholarly metrics</span> usually reside in browser tabs, checked sporadically. This study changes the paradigm by introducing a handheld, battery-operated e-ink device—the StatCounter—that displays Google Scholar citation statistics in real-time.
+                </p>
+                <p>
+                    Drawing on a longitudinal auto-ethnographic inquiry, we examined how constant, embodied access to these numbers influences motivation, attention, and academic identity. The device transforms data from a distant digital signal into a physical companion.
+                </p>
+                
+                <!-- Tech Specs Mini-Card -->
+                <div class="mt-8 p-6 bg-white/5 border border-white/10 rounded-lg backdrop-blur-sm">
+                    <h4 class="text-xs uppercase tracking-widest text-gray-500 mb-4 font-bold">Hardware Profile</h4>
+                    <div class="grid grid-cols-2 gap-4 text-sm text-gray-300">
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-microchip"></i> Raspberry Pi Pico 2 WH</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-layer-group"></i> Waveshare 2.13" E-Ink</div>
+                        <div class="flex items-center gap-2"><i class="fa-brands fa-python"></i> MicroPython</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-battery-half"></i> 2000mAh LiPo</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Context Image 1 -->
+            <div class="relative h-[500px] w-full rounded-none md:rounded-lg overflow-hidden reveal delay-200 group">
+                <img src="/images/statcounter-hand.jpg" alt="StatCounter in hand" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                <div class="absolute bottom-4 left-4 text-xs font-mono text-white/70 bg-black/50 px-2 py-1">Fig 1. Embodied Metrics</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Key Findings (Bento Grid Style) -->
+    <section id="findings" class="py-32 px-6 relative z-10 bg-[#0f1115]">
+        <div class="max-w-6xl mx-auto mb-16 flex flex-col md:flex-row justify-between items-end border-b border-gray-800 pb-8 reveal">
+            <h2 class="text-4xl md:text-5xl font-bold text-white serif-font">Key Findings</h2>
+            <p class="text-gray-500 mt-4 md:mt-0 max-w-md text-right">
+                How situated access reshapes the meaning of metrics.
+            </p>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]">
+            
+            <!-- Finding 1: Micro-checks (Text heavy) -->
+            <div class="p-8 bg-[#1a1d24] rounded-2xl border border-white/5 hover:border-white/20 transition-colors duration-300 flex flex-col justify-between group reveal">
+                <div class="text-3xl text-gray-700 group-hover:text-white transition-colors duration-500">01</div>
+                <div>
+                    <h3 class="text-2xl text-white font-serif mb-3">Ambient Proximity</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        The pervasive availability of metrics invites frequent "micro-checks" and short reflective pauses. It turns the act of checking citations from a deliberate task into an almost subconscious habit.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Finding 2: Image (Companionship) -->
+            <div class="md:col-span-2 relative rounded-2xl overflow-hidden group reveal delay-100">
+                <img src="/images/statcounter-desk.jpg" alt="Device on desk" class="w-full h-full object-cover image-hover-zoom filter brightness-90 contrast-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-8 left-8 max-w-lg">
+                    <div class="text-3xl text-white/50 mb-2">02</div>
+                    <h3 class="text-2xl md:text-3xl text-white font-serif mb-2">A Sense of Companionship</h3>
+                    <p class="text-gray-300 text-sm md:text-base">
+                        Carrying the device prompts new narratives about academic identity. It became a companion during travel and periods away from the office, bridging the gap between work and life.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Finding 3: Image (Context) -->
+            <div class="md:row-span-2 relative rounded-2xl overflow-hidden group reveal delay-150">
+                <img src="/images/statcounter-bus.jpg" alt="Device in transit" class="w-full h-full object-cover image-hover-zoom grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+                <div class="absolute top-8 left-8">
+                    <div class="text-3xl text-white mb-2">03</div>
+                    <h3 class="text-2xl text-white font-serif">The Social Object</h3>
+                </div>
+                <div class="absolute bottom-8 left-8 right-8">
+                     <p class="text-gray-200 text-sm">
+                        The device sparked curiosity in colleagues and strangers alike, becoming a physical anchor for conversations about academic labor and evaluation.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Finding 4: Emotional Impact (Dark card) -->
+            <div class="md:col-span-2 p-8 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-white/5 flex flex-col justify-center items-center text-center reveal delay-200">
+                <div class="text-3xl text-gray-600 mb-4">04</div>
+                <h3 class="text-3xl md:text-4xl text-white font-serif mb-6">The Emotional Rollercoaster</h3>
+                <p class="text-gray-400 max-w-lg mx-auto leading-relaxed">
+                    While increases brought moments of joy, the constant visibility also introduced moments of distraction and second-guessing when numbers dropped or stagnated. The device made the emotional volatility of metrics tangible.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section: Paper Info / Footer -->
+    <section id="paper" class="py-24 px-6 bg-black relative z-10 text-center">
+        <div class="max-w-4xl mx-auto reveal">
+            <i class="fa-solid fa-file-pdf text-6xl text-gray-700 mb-8"></i>
+            <h2 class="text-4xl font-bold text-white mb-6 serif-font">Read the Paper</h2>
+            <p class="text-gray-500 mb-10 text-lg">
+                Accepted at the International Symposium on Pervasive Displays (PerDis) 2026.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="/Everpresent-StatCounter.pdf" target="_blank" class="px-8 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors duration-300 rounded-sm">
+                    Download PDF
+                </a>
+                <a href="https://www.jonaso.de/" class="px-8 py-4 border border-gray-700 text-gray-300 font-bold uppercase tracking-widest hover:border-white hover:text-white transition-colors duration-300 rounded-sm">
+                    Contact Author
+                </a>
+            </div>
+
+            <div class="mt-24 pt-12 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 uppercase tracking-widest">
+                <div>&copy; 2026 Jonas Oppenlaender</div>
+                <div class="mt-4 md:mt-0 space-x-4">
+                    <a href="https://www.oulu.fi/" class="hover:text-white">University of Oulu</a>
+                    <a href="https://ubicomp.oulu.fi/" class="hover:text-white">Center for Applied Computing</a>
+                    <a href="http://www.per-dis.org/2026/" class="hover:text-white">PerDis '26</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Reveal on scroll logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 150;
+
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            // Trigger once on load
+            revealOnScroll();
+
+            // Navbar background opacity on scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-black/80', 'backdrop-blur-md');
+                    navbar.classList.remove('py-6');
+                    navbar.classList.add('py-4');
+                } else {
+                    navbar.classList.remove('bg-black/80', 'backdrop-blur-md');
+                    navbar.classList.remove('py-4');
+                    navbar.classList.add('py-6');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
