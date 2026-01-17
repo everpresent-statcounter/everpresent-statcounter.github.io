@@ -94,11 +94,19 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 mix-blend-difference px-6 py-6 flex justify-between items-center transition-all duration-300" id="navbar">
         <div class="text-white font-bold tracking-widest uppercase text-sm cinzel">StatCounter</div>
-        <div class="hidden md:flex space-x-8 text-xs tracking-widest uppercase font-semibold text-gray-300">
+
+        <!-- Centered Links -->
+        <div class="hidden md:flex space-x-8 text-xs tracking-widest uppercase font-semibold text-gray-300 absolute left-1/2 transform -translate-x-1/2">
             <a href="#concept" class="hover:text-white transition-colors">The Concept</a>
             <a href="#findings" class="hover:text-white transition-colors">Findings</a>
             <a href="#paper" class="hover:text-white transition-colors">The Paper</a>
         </div>
+
+        <!-- Right Side: Code Button -->
+        <a href="https://github.com/joetm/raspberry-scholar" target="_blank" class="hidden md:flex items-center gap-2 px-4 py-2 border border-white/20 rounded-sm text-xs uppercase tracking-widest text-gray-300 hover:text-white hover:border-white transition-all duration-300 bg-white/5 backdrop-blur-sm">
+            <i class="fa-brands fa-github text-sm"></i>
+            <span>Code</span>
+        </a>
     </nav>
 
     <!-- Hero Section -->
